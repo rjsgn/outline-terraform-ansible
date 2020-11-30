@@ -63,3 +63,23 @@ variable "outline_server_boot_disk_size" {
   description = "Compute Engine VM Instance Boot Disc Size"
   default     = 10
 }
+
+variable "outline_server_boot_disk_type" {
+  type        = string
+  description = "Compute Engine VM Instance Boot Disc Type. Available options are pd-standard, pd-balanced and pd-ssd"
+  default = "pd-ssd"
+}
+
+// User Credentials for Target Machine
+
+variable "user" {
+  type        = string
+  description = "Username for the SSH Key."
+  default     = "user"
+}
+
+variable "public_key" {
+  type        = string
+  description = "Absolute path to the SSH public key. Use ssh-keygen to generate a new SSH key. This public key will be added to the authorized keys for the VM Instance."
+  default     = "/path/to/public_key.pub"
+}

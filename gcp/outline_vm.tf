@@ -11,6 +11,7 @@ resource "google_compute_instance" "outline_vm" {
     initialize_params {
       image = var.outline_server_boot_disk_image
       size  = var.outline_server_boot_disk_size
+      type = var.outline_server_boot_disk_type
     }
   }
 
@@ -18,6 +19,10 @@ resource "google_compute_instance" "outline_vm" {
     network = google_compute_network.outline_network.name
     access_config {
     }
+  }
+
+  metadata = {
+    ssh-keys = "${var.user}:${file(var.public_key)}"
   }
 
 }
