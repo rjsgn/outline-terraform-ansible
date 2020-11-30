@@ -67,7 +67,7 @@ variable "outline_server_boot_disk_size" {
 variable "outline_server_boot_disk_type" {
   type        = string
   description = "Compute Engine VM Instance Boot Disc Type. Available options are pd-standard, pd-balanced and pd-ssd"
-  default = "pd-ssd"
+  default     = "pd-ssd"
 }
 
 // User Credentials for Target Machine
@@ -82,4 +82,50 @@ variable "public_key" {
   type        = string
   description = "Absolute path to the SSH public key. Use ssh-keygen to generate a new SSH key. This public key will be added to the authorized keys for the VM Instance."
   default     = "/path/to/public_key.pub"
+}
+
+// Database Instance Settings
+
+variable "db_instance_name" {
+  type        = string
+  description = "Database Instance Name"
+  default     = "outline-db-instance"
+}
+
+variable "db_version" {
+  type        = string
+  description = "Database version"
+  default     = "POSTGRES_12"
+}
+
+variable "db_region" {
+  type        = string
+  description = "SQL Instance Region"
+  default     = "us-central1"
+}
+
+variable "db_tier" {
+  type        = string
+  description = "SQL Instance Tier"
+  default     = "db-f1-micro"
+}
+
+// Database Details
+
+variable "db_name" {
+  type        = string
+  description = "Database Name"
+  default     = "outline_db"
+}
+
+variable "db_user" {
+  type        = string
+  description = "Database Username"
+  default     = "outline_db_user"
+}
+
+variable "db_password" {
+  type        = string
+  description = "Database Password"
+  default     = "Passw0rd"
 }
