@@ -1,0 +1,10 @@
+---
+- name: Install Outline
+  hosts: all
+  remote_user: "{{ user }}"
+  become: yes
+  become_method: sudo
+
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: node, tags: ["node"] }

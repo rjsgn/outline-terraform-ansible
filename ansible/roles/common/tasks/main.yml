@@ -1,0 +1,9 @@
+---
+- name: Update list of available packages
+  apt:
+    update_cache: yes
+
+- name: Install wget and unzip
+  apt:
+    name: ['wget', 'unzip']
+    state: present
