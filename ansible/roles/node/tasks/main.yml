@@ -5,10 +5,24 @@
 
 - name: Add repo for nodesource
   apt_repository:
-    repo: 'deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release }} main'
+    repo: "deb https://deb.nodesource.com/node_14.x {{ ansible_distribution_release }} main"
     update_cache: yes
 
 - name: Install Nodejs
   apt:
     name: nodejs
+    state: present
+
+- name: Add apt key for Yarn
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+- name: Add repo for Yarn
+  apt_repository:
+    repo: "deb https://dl.yarnpkg.com/debian/ stable main"
+    update_cache: yes
+
+- name: Install Yarn
+  apt:
+    name: yarn
     state: present
