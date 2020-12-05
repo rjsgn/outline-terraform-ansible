@@ -1,0 +1,11 @@
+---
+- name: Install Redis Server
+  apt:
+    name: redis-server
+    state: present
+
+- name: Enable Redis Server Service
+  systemd:
+    state: started
+    name: redis
+    enabled: yes

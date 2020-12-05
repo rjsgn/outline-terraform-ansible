@@ -29,7 +29,7 @@ resource "google_compute_instance" "outline_vm" {
     plays {
       playbook {
         file_path = "../ansible/main.yml"
-        tags = ["common", "node"]
+        tags = ["common", "node", "redis"]
       }
       enabled = true
       hosts = [self.network_interface.0.access_config.0.nat_ip]
