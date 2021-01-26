@@ -16,12 +16,17 @@ Before running the script, make sure you update values in the file `vars.tf`.
 
     Note:
 
-    The script by default creates cloud resources that are not covered by GCP Free Tier. Please calculate the cost of the resources that you mention in the variables *vars.tf* file.
+    The script by default creates cloud resources that are not covered by GCP Free Tier.
     
-    I do not claim responsibility for any cost incurred from running this script.
+    Please calculate the cost of the resources that you mention in the variables *vars.tf* file.
+    
+**I do not claim responsibility for any cost incurred from running this script.**
+
+### Steps:
 
 - Clone this repository
 - Make sure Terraform Provisioner Ansible is installed
+- Update the values of the variables in the files `gcp/vars.tf` and `ansible/group_vars/all`
 - Run `terraform init`
 - Run `terraform apply`
 - Sit back and relax
