@@ -1,3 +1,17 @@
 ---
 
 user: user
+
+slack_key : slack_key
+
+slack_secret: slack_secret
+
+google_client_id: google_client_id
+
+google_client_secret: google_client_secret
+
+google_allowed_domains: domain1,domain2
+
+slack_verification_token: slack_verification_token
+
+slack_app_id: slack_app_id

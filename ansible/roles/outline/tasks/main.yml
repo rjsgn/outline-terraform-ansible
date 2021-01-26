@@ -38,3 +38,45 @@
     path: /opt/outline/.env
     regexp: '(?:DATABASE_URL=postgres:\/\/user:pass@localhost:5532\/outline)'
     replace: "DATABASE_URL=postgres://{{ db_username }}:{{ db_password }}@{{ db_ip_address }}:5432/{{ db_name }}"
+
+- name: Update Slack Key
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:SLACK_KEY=)(get_a_key_from_slack)'
+    replace: "SLACK_KEY={{ slack_key }}"
+
+- name: Update Slack Secret
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:SLACK_SECRET=)(get_the_secret_of_above_key)'
+    replace: "SLACK_SECRET={{ slack_secret }}"
+
+- name: Update Google Client ID
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:GOOGLE_CLIENT_ID=)'
+    replace: "GOOGLE_CLIENT_ID={{ google_client_id }}"
+
+- name: Update Google Client Secret
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:GOOGLE_CLIENT_SECRET=)'
+    replace: "GOOGLE_CLIENT_SECRET={{ google_client_secret }}"
+
+- name: Update Google Allowed Domains
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:GOOGLE_ALLOWED_DOMAINS=)'
+    replace: "GOOGLE_ALLOWED_DOMAINS={{ google_allowed_domains }}"
+
+- name: Update Slack Verification Token
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:SLACK_VERIFICATION_TOKEN=)(PLxk6OlXXXXXVj3YYYY)'
+    replace: "SLACK_VERIFICATION_TOKEN={{ slack_verification_token }}"
+
+- name: Update Slack App ID
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:SLACK_APP_ID=)(A0XXXXXXX)'
+    replace: "SLACK_APP_ID={{ slack_app_id }}"    
