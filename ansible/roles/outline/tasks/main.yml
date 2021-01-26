@@ -9,3 +9,26 @@
   command: "yarn install"
   args:
     chdir: /opt/outline/
+
+- name: Create .env file
+  ansible.builtin.copy:
+    src: /opt/outline/.env.sample
+    dest: /opt/outline/.env
+    remote_src: yes
+
+- name: Generate Secret Key
+  set_fact:
+    secret_key: "{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=32') }}"
+    utils_secret: "{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=32') }}"
+
+- name: Update Secret Key
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:SECRET_KEY=)(generate_a_new_key)'
+    replace: "SECRET_KEY={{ secret_key }}"
+
+- name: Update Utils Secret Key
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:UTILS_SECRET=)(generate_a_new_key)'
+    replace: "UTILS_SECRET={{ utils_secret }}"
