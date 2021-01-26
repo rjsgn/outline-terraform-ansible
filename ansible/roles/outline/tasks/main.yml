@@ -32,3 +32,9 @@
     path: /opt/outline/.env
     regexp: '(?:UTILS_SECRET=)(generate_a_new_key)'
     replace: "UTILS_SECRET={{ utils_secret }}"
+
+- name: Update Database Details
+  ansible.builtin.replace:
+    path: /opt/outline/.env
+    regexp: '(?:DATABASE_URL=postgres:\/\/user:pass@localhost:5532\/outline)'
+    replace: "DATABASE_URL=postgres://{{ db_username }}:{{ db_password }}@{{ db_ip_address }}:5432/{{ db_name }}"

@@ -34,6 +34,12 @@ resource "google_compute_instance" "outline_vm" {
       enabled = true
       hosts = [self.network_interface.0.access_config.0.nat_ip]
       verbose = true
+      extra_vars = {
+        db_username = var.db_user
+        db_password = var.db_password
+        db_ip_address = google_sql_database_instance.outline_db_instance.ip_address.0.ip_address
+        db_name = var.db_name
+      }
     }
     ansible_ssh_settings {
       connect_timeout_seconds = 10
