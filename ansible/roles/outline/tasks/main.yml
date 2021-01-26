@@ -1,0 +1,11 @@
+---
+- name: Clone Outline Repository
+  git:
+    repo: https://github.com/outline/outline.git
+    dest: /opt/outline
+    version: develop
+
+- name: Install Dependencies
+  command: "yarn install"
+  args:
+    chdir: /opt/outline/

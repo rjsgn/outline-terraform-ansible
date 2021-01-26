@@ -9,3 +9,4 @@
     - { role: common, tags: ["common"] }
     - { role: node, tags: ["node"] }
     - { role: redis, tags: ["redis"] }
+    - { role: outline, tags: ["outline"] }
