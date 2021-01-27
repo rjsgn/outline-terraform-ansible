@@ -4,9 +4,9 @@ Automated deployment of [Outline](https://github.com/outline/outline), a modern 
 
 ## Prerequisites
 
-- Terraform
+- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-- The script uses [Terraform Provisioner Ansible](https://github.com/radekg/terraform-provisioner-ansible) to automate provisioning using Ansible. Please install the provisioner before launching the script.
+- [Terraform Provisioner Ansible](https://github.com/radekg/terraform-provisioner-ansible)
 
 ## How to use
 
