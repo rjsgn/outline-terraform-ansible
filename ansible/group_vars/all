@@ -15,3 +15,37 @@ google_allowed_domains: domain1,domain2
 slack_verification_token: slack_verification_token
 
 slack_app_id: slack_app_id
+
+google_analytics_id: google_analytics_id
+
+sentry_dsn: sentry_dsn
+
+aws_access_key_id: aws_access_key_id
+
+aws_access_key_secret: aws_access_key_secret
+
+aws_region: aws_region
+
+aws_s3_bucket_url: aws_s3_bucket_url
+
+aws_bucket_name: aws_bucket_name
+
+smtp_host: smtp_host
+
+smtp_port: smtp_port
+
+smtp_username: smtp_username
+
+smtp_password: smtp_password
+
+smtp_from_mail: smtp_from_mail
+
+smtp_reply_mail: smtp_reply_mail
+
+public_url: public_url
+
+force_https: false
+
+default_language: en_US
+
+logo_url: logo_url
