@@ -16,7 +16,7 @@ The script currently automates deployment of Outline server on Google Cloud Plat
 ## Prerequisites
 
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
-
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - [Terraform Provisioner Ansible](https://github.com/radekg/terraform-provisioner-ansible)
 
 ## How to use
@@ -35,6 +35,8 @@ Before running the script, make sure you update values in the file `vars.tf`.
 
 - Clone this repository
 - Make sure Terraform Provisioner Ansible is installed
+- Create a service account with *Compute Admin* and *Service Networking Admin* roles
+- Generate a key for the service account and update the path in variables
 - Update the values of the variables in the files `gcp/vars.tf` and `ansible/group_vars/all`
 - Change directory to `gcp`
 - Run `terraform init`
