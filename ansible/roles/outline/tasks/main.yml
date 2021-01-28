@@ -54,6 +54,7 @@
     - {regexp: '(?:FORCE_HTTPS=true)', replace: 'FORCE_HTTPS={{ force_https }}'}
     - {regexp: '(?:DEFAULT_LANGUAGE=en_US)', replace: 'DEFAULT_LANGUAGE={{ default_language }}'}
     - {regexp: '(?:TEAM_LOGO=(https://example.com/images/logo.png))', replace: 'TEAM_LOGO={{ logo_url }}'}
+    - {regexp: '(?:REDIS_URL=redis://localhost:6479)', replace: 'REDIS_URL=redis://localhost:6379'}
 
 - name: Build Source Code
   command: "yarn build"
