@@ -42,10 +42,14 @@ smtp_from_mail: smtp_from_mail
 
 smtp_reply_mail: smtp_reply_mail
 
-public_url: public_url
+public_url: https://example.com
 
-force_https: false
+force_https: "false"
 
 default_language: en_US
 
 logo_url: logo_url
+
+domain_name: example.com
+
+admin_email: admin@example.com
