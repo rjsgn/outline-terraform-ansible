@@ -1,0 +1,31 @@
+---
+- name: Install Nginx and Certbot
+  apt:
+    name: [ "nginx", "certbot", "python3-certbot-nginx" ]
+    state: present
+    update_cache: True
+
+- name: Delete Nginx default configuration
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: Copy Nginx reverse proxy configuration
+  template:
+    src: reverse_proxy_template
+    dest: "/etc/nginx/sites-enabled/{{ domain_name }}"
+
+- name: Update configuration file
+  ansible.builtin.replace:
+    path: "/etc/nginx/sites-enabled/{{ domain_name }}"
+    regexp: "(?:example.com)"
+    replace: "{{ domain_name }}"
+
+- name: Get Let's Encrypt Certificate
+  command: "certbot --nginx -d {{ domain_name }} --non-interactive --agree-tos -m {{ admin_email }}"
+
+- name: Enable Nginx
+  systemd:
+    name: nginx
+    state: started
+    enabled: True

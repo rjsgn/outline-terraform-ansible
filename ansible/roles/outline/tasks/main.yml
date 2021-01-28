@@ -72,6 +72,11 @@
     chdir: /opt/outline
   become: yes
 
+- name: Set Node Environment
+  template:
+    src: outline.sh
+    dest: /etc/profile.d/outline.sh
+
 - name: Start PM2
   command: "node_modules/pm2/bin/pm2 start build/server/index.js --name outline -i max --env production"
   args:
