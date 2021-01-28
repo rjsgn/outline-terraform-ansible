@@ -54,3 +54,35 @@
     - {regexp: '(?:FORCE_HTTPS=true)', replace: 'FORCE_HTTPS={{ force_https }}'}
     - {regexp: '(?:DEFAULT_LANGUAGE=en_US)', replace: 'DEFAULT_LANGUAGE={{ default_language }}'}
     - {regexp: '(?:TEAM_LOGO=(https://example.com/images/logo.png))', replace: 'TEAM_LOGO={{ logo_url }}'}
+
+- name: Build Source Code
+  command: "yarn build"
+  args:
+    chdir: /opt/outline/
+
+- name: Migrate Database Schema
+  command: "yarn sequelize:migrate --env=production-ssl-disabled"
+  args:
+    chdir: /opt/outline/
+
+- name: Install PM2
+  command: "yarn add pm2"
+  args:
+    chdir: /opt/outline
+  become: yes
+
+- name: Start PM2
+  command: "node_modules/pm2/bin/pm2 start build/server/index.js --name outline -i max --env production"
+  args:
+    chdir: /opt/outline
+  become: no
+
+- name: Save PM2 Process List
+  command: "node_modules/pm2/bin/pm2 save"
+  args:
+    chdir: /opt/outline
+  become: no
+
+- name: PM2 Startup
+  command: "env PATH=$PATH:/usr/bin /opt/outline/node_modules/pm2/bin/pm2 startup systemd -u {{ user }} --hp /home/{{ user }}"
+  become: yes

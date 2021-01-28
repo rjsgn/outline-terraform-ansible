@@ -15,7 +15,7 @@ resource "google_sql_database_instance" "outline_db_instance" {
     ip_configuration {
       ipv4_enabled    = false
       private_network = google_compute_network.outline_network.id
-      require_ssl = true
+      require_ssl = false
     }
   }
 }
