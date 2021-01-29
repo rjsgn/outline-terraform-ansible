@@ -2,6 +2,8 @@
 
 Automated deployment of [Outline](https://github.com/outline/outline), a modern knowledge base, using Terraform and Ansible.
 
+## Deploy to Google Cloud Platform
+
 The script currently automates deployment of Outline server on Google Cloud Platform. This script will :
 
 - Create a virtual machine
@@ -16,7 +18,7 @@ The script currently automates deployment of Outline server on Google Cloud Plat
 - Create a reverse proxy to the application
 - Get Let's Encrypt certificate for the domain mentioned in `ansible/group_vars/all` (Optional)
 
-## Prerequisites
+### Prerequisites
 
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
@@ -24,7 +26,7 @@ The script currently automates deployment of Outline server on Google Cloud Plat
 - Google Cloud Platform Service Account Private Key with required permissions
 - Domain Name (Optional)
 
-## How to use
+### How to use
 
 Before running the script, make sure you update values in the file `vars.tf`. Alternatively, you can use a `.tfvars` file.
 
@@ -49,8 +51,25 @@ Before running the script, make sure you update values in the file `vars.tf`. Al
 - Sit back and relax
 - Update the domain's A record to point to the IP of the VM when prompted
 
-## Destroying resources
+### Destroying resources
 
 To destroy all the resources the script created, run `terraform destroy`.
 
 **Caution: This will destroy all resources created using this terraform script. Any data stored on the virtual machine or the database will be permanently deleted.**
+
+## Deploy using Ansible
+
+If you prefer deploying the application elsewhere, you could just use the Ansible Playbook.
+
+You would have to create database manually and provide connection details as parameter extra-vars.
+
+### Prerequisites
+
+- [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+- Domain Name (Optional)
+
+### How to use
+
+- Update the values of the variables in group_vars/all
+- Update ansible hosts file
+- Run `ansible-playbook main.yml -i hosts --extra-vars='{"db_ip_address":"127.0.0.1","db_name":"outline_db","db_password":"Passw0rd","db_username":"outline_db_user"}'`
