@@ -3,7 +3,7 @@
 */
 
 resource "google_sql_database_instance" "outline_db_instance" {
-  
+
   name = var.db_instance_name
   database_version = var.db_version
   region = var.db_region

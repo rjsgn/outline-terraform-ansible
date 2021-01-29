@@ -1,7 +1,7 @@
 ---
-- name: Install Nginx and Certbot
+- name: Install Nginx
   apt:
-    name: [ "nginx", "certbot", "python3-certbot-nginx" ]
+    name: nginx
     state: present
     update_cache: True
 
@@ -20,9 +20,6 @@
     path: "/etc/nginx/sites-enabled/{{ domain_name }}"
     regexp: "(?:example.com)"
     replace: "{{ domain_name }}"
-
-- name: Get Let's Encrypt Certificate
-  command: "certbot --nginx -d {{ domain_name }} --non-interactive --agree-tos -m {{ admin_email }}"
 
 - name: Enable Nginx
   systemd:

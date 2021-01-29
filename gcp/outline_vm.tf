@@ -29,7 +29,7 @@ resource "google_compute_instance" "outline_vm" {
     plays {
       playbook {
         file_path = "../ansible/main.yml"
-        tags = ["common", "node", "redis", "outline", "nginx"]
+        tags = ["common", "node", "redis", "outline", "nginx", "certbot"]
       }
       enabled = true
       hosts = [self.network_interface.0.access_config.0.nat_ip]
@@ -38,7 +38,8 @@ resource "google_compute_instance" "outline_vm" {
         db_username = var.db_user
         db_password = var.db_password
         db_ip_address = google_sql_database_instance.outline_db_instance.ip_address.0.ip_address
-        db_name = var.db_name
+        db_name = var.db_name,
+        server_ip = self.network_interface.0.access_config.0.nat_ip
       }
     }
     ansible_ssh_settings {

@@ -11,3 +11,4 @@
     - { role: redis, tags: ["redis"] }
     - { role: outline, tags: ["outline"] }
     - { role: nginx, tags: ["nginx"] }
+    - { role: certbot, tags: ["certbot"] }
