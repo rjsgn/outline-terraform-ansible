@@ -12,16 +12,21 @@ The script currently automates deployment of Outline server on Google Cloud Plat
 - Add firewall rules to open ports 22, 80 and 443 *(TCP and ICMP Protocols)*
 - Install Outline server and it's dependencies
 - Deploy the application using PM2
+- Install Nginx and Certbot
+- Create a reverse proxy to the application
+- Get Let's Encrypt certificate for the domain mentioned in `ansible/group_vars/all` (Optional)
 
 ## Prerequisites
 
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 - [Terraform Provisioner Ansible](https://github.com/radekg/terraform-provisioner-ansible)
+- Google Cloud Platform Service Account Private Key with required permissions
+- Domain Name (Optional)
 
 ## How to use
 
-Before running the script, make sure you update values in the file `vars.tf`. 
+Before running the script, make sure you update values in the file `vars.tf`. Alternatively, you can use a `.tfvars` file.
 
     Note:
 
@@ -42,6 +47,7 @@ Before running the script, make sure you update values in the file `vars.tf`.
 - Run `terraform init`
 - Run `terraform apply`
 - Sit back and relax
+- Update the domain's A record to point to the IP of the VM when prompted
 
 ## Destroying resources
 
