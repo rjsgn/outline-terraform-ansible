@@ -26,6 +26,8 @@ The script currently automates deployment of Outline server on Google Cloud Plat
 - Enable Redis Memorystore on Google Cloud Platform (Optional)
 - Domain Name (Optional)
 
+You could use `install-terraform.sh` and `install-ansible.sh` to install Terraform and Ansible on Debian based linux distributions.
+
 ### How to use
 
 Before running the script, make sure you update values in the file `vars.tf`. Alternatively, you can use a `.tfvars` file.
