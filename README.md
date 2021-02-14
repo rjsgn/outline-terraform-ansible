@@ -22,8 +22,8 @@ The script currently automates deployment of Outline server on Google Cloud Plat
 
 - [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-- [Terraform Provisioner Ansible](https://github.com/radekg/terraform-provisioner-ansible)
 - Google Cloud Platform Service Account Private Key with required permissions
+- Enable Redis Memorystore on Google Cloud Platform (Optional)
 - Domain Name (Optional)
 
 ### How to use
@@ -72,4 +72,4 @@ You would have to create database manually and provide connection details as par
 
 - Update the values of the variables in group_vars/all
 - Update ansible hosts file
-- Run `ansible-playbook main.yml -i hosts --extra-vars='{"db_ip_address":"127.0.0.1","db_name":"outline_db","db_password":"Passw0rd","db_username":"outline_db_user"}'`
+- Run `ansible-playbook main.yml -i hosts --extra-vars='{"db_ip_address":"127.0.0.1","db_name":"outline_db","db_password":"Passw0rd","db_username":"outline_db_user","enable_redis":true}'`

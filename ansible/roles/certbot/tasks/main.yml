@@ -9,8 +9,8 @@
     name: [ "certbot", "python3-certbot-nginx" ]
     state: present
     update_cache: True
-  when: run_certbot
+  when: run_certbot|bool
 
 - name: Get Let's Encrypt Certificate
   command: "certbot --nginx -d {{ domain_name }} --non-interactive --agree-tos -m {{ admin_email }}"
-  when: run_certbot
+  when: run_certbot|bool

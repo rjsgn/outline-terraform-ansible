@@ -84,6 +84,12 @@ variable "public_key" {
   default     = "/path/to/public_key.pub"
 }
 
+variable "private_key" {
+  type        = string
+  description = "Absolute path to the SSH private key. This private key will be used for SSH authentication."
+  default     = "/path/to/private_key"
+}
+
 // Database Instance Settings
 
 variable "db_instance_name" {
@@ -128,4 +134,36 @@ variable "db_password" {
   type        = string
   description = "Database Password"
   default     = "Passw0rd"
+}
+
+// Redis Settings
+
+variable "enable_gcp_redis_memorystore" {
+  type = bool
+  description = "True to enable GCP Redis Memorystore instead"
+  default = false
+}
+
+variable "redis_instance_name" {
+  type = string
+  description = "Redis Instance Name"
+  default = "redis_outline_instance"
+}
+
+variable "redis_tier" {
+  type = string
+  description = "Redis Tier"
+  default = "STANDARD_HA"
+}
+
+variable "redis_location_id" {
+  type = string
+  description = "Redis Location ID"
+  default = "us-central1-a"
+}
+
+variable "redis_memory_size_gb" {
+  type = number
+  description = "Redis Memory Size"
+  default = 1
 }

@@ -11,7 +11,7 @@
     chdir: /opt/outline/
 
 - name: Create .env file
-  ansible.builtin.copy:
+  copy:
     src: /opt/outline/.env.sample
     dest: /opt/outline/.env
     remote_src: yes
@@ -22,7 +22,7 @@
     utils_secret: "{{ lookup('password', '/dev/null chars=ascii_lowercase,digits length=32') }}"
 
 - name: Update Environment Variables
-  ansible.builtin.replace:
+  replace:
     path: /opt/outline/.env
     regexp: "{{ item.regexp }}"
     replace: "{{ item.replace }}"
@@ -55,6 +55,15 @@
     - {regexp: '(?:DEFAULT_LANGUAGE=en_US)', replace: 'DEFAULT_LANGUAGE={{ default_language }}'}
     - {regexp: '(?:TEAM_LOGO=(https://example.com/images/logo.png))', replace: 'TEAM_LOGO={{ logo_url }}'}
     - {regexp: '(?:REDIS_URL=redis://localhost:6479)', replace: 'REDIS_URL=redis://localhost:6379'}
+
+- name: Update Redis Config
+  replace:
+    path: /opt/outline/.env
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  with_items:
+    - {regexp: '(?:REDIS_URL=redis://localhost:6379)', replace: 'REDIS_URL=redis://{{redis_host}}:{{redis_port}}'}
+  when: not enable_redis|bool
 
 - name: Build Source Code
   command: "yarn build"

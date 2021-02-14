@@ -16,7 +16,7 @@
     dest: "/etc/nginx/sites-enabled/{{ domain_name }}"
 
 - name: Update configuration file
-  ansible.builtin.replace:
+  replace:
     path: "/etc/nginx/sites-enabled/{{ domain_name }}"
     regexp: "(?:example.com)"
     replace: "{{ domain_name }}"

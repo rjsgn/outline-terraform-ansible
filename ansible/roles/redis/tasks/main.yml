@@ -3,9 +3,11 @@
   apt:
     name: redis-server
     state: present
+  when: enable_redis|bool
 
 - name: Enable Redis Server Service
   systemd:
     state: started
     name: redis
     enabled: yes
+  when: enable_redis|bool
