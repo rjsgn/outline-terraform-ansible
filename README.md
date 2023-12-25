@@ -36,7 +36,7 @@ Before running the script, make sure you update values in the file `vars.tf`. Al
 
     The script by default creates cloud resources that are not covered by GCP Free Tier.
     
-    Please calculate the cost of the resources that you mention in the variables *vars.tf* file.
+    Please calculate the cost of the resources that you mention in the variables vars.tf file.
     
 **I do not claim responsibility for any cost incurred from running this script.**
 
@@ -44,7 +44,7 @@ Before running the script, make sure you update values in the file `vars.tf`. Al
 
 - Clone this repository
 - Make sure Terraform Provisioner Ansible is installed
-- Create a service account with *Compute Admin* and *Service Networking Admin* roles
+- Create a service account with *Compute Admin*, *Cloud SQL Admin* and *Service Networking Admin* roles
 - Generate a key for the service account and update the path in variables
 - Update the values of the variables in the files `gcp/vars.tf` and `ansible/group_vars/all`
 - Change directory to `gcp`
