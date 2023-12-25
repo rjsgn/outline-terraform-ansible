@@ -8,5 +8,5 @@
 - name: Install wget and unzip
   apt:
     update_cache: yes
-    name: ['wget', 'unzip']
+    name: ['wget', 'unzip', 'gpg', 'git']
     state: present

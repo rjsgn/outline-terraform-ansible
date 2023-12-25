@@ -10,6 +10,8 @@ resource "google_sql_database_instance" "outline_db_instance" {
 
   depends_on = [google_service_networking_connection.private_vpc_connection]
 
+  deletion_protection = false
+
   settings {
     tier = var.db_tier
     ip_configuration {

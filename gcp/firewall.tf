@@ -16,4 +16,6 @@ resource "google_compute_firewall" "outline_firewall" {
     protocol = "icmp"
   }
 
+  source_ranges = ["0.0.0.0/0"]
+
 }
